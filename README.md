@@ -46,22 +46,14 @@ Folders:
 client/
   src/
     index.js
-  run: cp .sample.env .env
-  run: npm install
 
 server/
   src/
     index.js
-  run: cp .sample.env .env
-  run: npm install
-  run: npm run start
 
 worker/
   src/
-    index.js  
-  run: cp .sample.env .env
-  run: npm install
-  run: npm run start
+    index.js
 ```
 
 ## tests
@@ -69,15 +61,26 @@ worker/
 ```sh
 # Terminal 1
 cd server
+npm i
+cp .sample.env .env
+# edit .env file
 npm run start
 
 # Terminal 2
 cd worker
+npm i
+cp .sample.env .env
+# edit .env file
 npm run start
 
 # Terminal 3: start client 1
 cd client
+npm i
+cp .sample.env .env
+# edit .env file
 npm run start:1
+# or:
+# npm run start
 
 # Terminal 4: start client 2
 cd client
