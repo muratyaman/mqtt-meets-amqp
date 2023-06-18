@@ -2,6 +2,10 @@
 
 Sample MQTT server, MQTT worker and MQTT client to use MQTT and AMQP for delivering messages reliably by creating some conventions about names of topics and queues.
 
+[MQTT](https://en.wikipedia.org/wiki/MQTT) is good at collecting messages from weak devices on IoT. But since it is more like a Pub/Sub messaging system, when devices connect, disconnect constantly on unstable networks, some messages are lost. There is no message queue despite its name.
+
+[AMQP](https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) is good at dealing with messages i.e. making sure that they are "worked" on; "delivered" in our case.
+
 ## requirements
 
 [Node v16.x](https://nodejs.org/en)
