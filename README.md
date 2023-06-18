@@ -18,9 +18,9 @@ We use:
 
 CLIENT subscribes to MQTT server topics like `to/<clientId>/text` etc.; publishes to topics like `from/<clientId>/text`. Also, HTTP interface `POST <host>/<command>` like `POST <host>/text` makes it easier to test publishing messages. `<command>` is a topic suffix.
 
-SERVER acts is an MQTT server. When a client subscribes, it opens a channel (per client per queue) on AMQP server and consumes messages on queues `to.<clientId>.<command>` like `to.user2.text` (where `/` is replaced by `.` ). On unsubscription (client disconnects), it closes that channel.
+SERVER acts is an MQTT server. When a client subscribes, it opens a channel (per client per queue) on AMQP server and consumes messages on queues `to.<clientId>.<command>` like `to.user2.text` (where `/` is replaced by `.` ). It publishes the AMQP message via MQTT. When publish is confirmed, it acknowledges the message on AMQP. On unsubscription (client disconnects), it closes that channel.
 
-WORKER subscribes to topics `from/#` on MQTT server; publishes messages to AMQP queues `to.<clientId>.<command>`. So, when we receive a command on `from.user1.text` with payload:
+WORKER subscribes to topics `from/#` on MQTT server; publishes messages to AMQP queues `to.<clientId>.<command>`. It is acts like an adapter between MQTT and AMQP depending on commands/business logic. So, when we receive a command on `from.user1.text` with payload:
 
 ```json
 {
