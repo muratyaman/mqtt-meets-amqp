@@ -121,6 +121,14 @@ npm run start:2
 # observe: message sent (while offline) is received
 ```
 
+## MQTT happy scenario
+
+![mqtt-happy-scenario](./mqtt-happy-scenario.png)
+
+## MQTT meets AMQP
+
+![mqtt-meets-amqp](./mqtt-meets-amqp.png)
+
 ## TODO
 
 * implement authorization check; username and password on MQTT server.
